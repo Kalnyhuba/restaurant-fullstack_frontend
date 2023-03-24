@@ -1,7 +1,11 @@
+import { ModalComponent } from './commons/modal/modal.component';
+import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
+import { CommonsModule } from './commons/commons.module';
+import { AuthenticationService } from './mainpage/authentication/authentication.service';
+import { MainpageModule } from './mainpage/mainpage.module';
+import { HomeModule } from './home/home.module';
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
+import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -9,10 +13,12 @@ import { AppComponent } from './app.component';
     AppComponent
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule
+    RouterModule,
+    HomeModule,
+    MainpageModule,
+    CommonsModule
   ],
-  providers: [],
+  providers: [AuthenticationService, MdbModalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
