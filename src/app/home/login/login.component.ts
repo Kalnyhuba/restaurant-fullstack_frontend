@@ -3,7 +3,7 @@ import { MdbModalService, MdbModalRef } from 'mdb-angular-ui-kit/modal';
 import { HomeService } from './../home.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { OnInit, AfterViewInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { Component } from '@angular/core';
 import { AuthenticationService } from 'src/app/mainpage/authentication/authentication.service';
 import { NgForm } from '@angular/forms';
@@ -80,6 +80,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
         .subscribe({
             next: (responseData: { message: string }) => {
                 this.authenticationService.setAuthorities(JSON.parse(responseData.message));
+                this.router.navigate(['/mainpage/home']);
             },
             error: (error) => {
                 this.errorMessage = error.error;
@@ -94,9 +95,5 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
   onForgotPassword() {
     this.router.navigate(['forgot-password']);
-  }
-
-  onBack() {
-    this.router.navigate(['home']);
   }
 }

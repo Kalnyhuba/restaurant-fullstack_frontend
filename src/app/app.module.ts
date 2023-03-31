@@ -7,6 +7,11 @@ import { HomeModule } from './home/home.module';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatButtonModule} from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -16,7 +21,12 @@ import { AppComponent } from './app.component';
     RouterModule,
     HomeModule,
     MainpageModule,
-    CommonsModule
+    CommonsModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [AuthenticationService, MdbModalService],
   bootstrap: [AppComponent]

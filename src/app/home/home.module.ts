@@ -12,8 +12,11 @@ import { RegisterComponent } from './register/register.component';
 import { PasswordValidatorDirective } from './password-validator.directive';
 import { VerifyComponent } from './verify/verify.component';
 import { LoginComponent } from './login/login.component';
-
-
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatButtonModule} from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,8 @@ import { LoginComponent } from './login/login.component';
     RegisterComponent,
     PasswordValidatorDirective,
     VerifyComponent,
-    LoginComponent
+    LoginComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +34,11 @@ import { LoginComponent } from './login/login.component';
     FormsModule,
     HttpClientModule,
     RouterModule,
-    CommonsModule
+    CommonsModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [HomeService],
   exports: []

@@ -6,31 +6,22 @@
         <div class="card-body">
             <div *ngIf="errorMessage !== null" class="alert alert-danger">{{ errorMessage }}</div>
             <form (ngSubmit)="onSubmit(f)" #f="ngForm" novalidate>
-                <div class="form-group">
-                    <label for="username">Felhasználónév</label>
-                    <input class="form-control" type="text" id="username" name="username" [(ngModel)]="username"
-                        required #un="ngModel">
-                    <div class="alert alert-warning p-2 mt-1" *ngIf="!un.valid && (un.touched || un.dirty)">
-                        <div *ngIf="un.errors?.['required']">Kötelező mező</div>
-                    </div>
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Felhasználónév</mat-label>
+                    <input matInput id="username" name="username" [(ngModel)]="username" required #un="ngModel"
+                        placeholder="Felhasználónév">
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Jelszó</mat-label>
+                    <input matInput type="password" id="password" name="password" [(ngModel)]="password" required
+                        #pw="ngModel" placeholder="Jelszó">
+                </mat-form-field>
+                <div>
+                    <a routerLink="/forgot-password">Elfelejtette jelszavát?</a>
                 </div>
-                <div class="form-group">
-                    <label for="password">Jelszó</label>
-                    <input class="form-control" type="password" id="password" name="password" [(ngModel)]="password"
-                        required #pw="ngModel">
-                    <div class="alert alert-warning p-2 mt-1" *ngIf="!pw.valid && (pw.touched || pw.dirty)">
-                        <div *ngIf="pw.errors?.['required']">Kötelező mező</div>
-                    </div>
-                </div>
-                <div class="forgot-password" (click)="onForgotPassword()">Elfelejtette jelszavát?</div>
-                <div class="mt-3 d-flex flex-wrap buttons">
-                    <button #button class="btn btn-primary" type="submit" [disabled]="!f.form.valid">
-                        <div #spinner class="spinner hidden" id="spinner"></div>
-                        <span #buttontext id="button-text">Bejelentkezés</span>
-                    </button>
-                    <button class="btn btn-primary" type="button" (click)="onBack()"><span
-                            style="margin-right: 0.3rem;">&#11104;</span>Vissza</button>
-                </div>
+                <button type="submit" mat-raised-button color="primary" [disabled]="!f.form.valid"
+                    style="margin-top: 0.3rem; margin-right: 0.3rem; margin-bottom: 0.2rem;">Bejelentkezés</button>
+                <button mat-raised-button color="primary" routerLink="/mainpage/home">Vissza</button>
             </form>
         </div>
     </div>

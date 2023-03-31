@@ -10,13 +10,4 @@ import { Component } from '@angular/core';
 export class MainhomeComponent {
 
   constructor(private http: HttpClient, private router: Router) { }
-
-  redirectToRegister() {
-    this.router.navigate(['/register']);
-}
-
-redirectToLogin() {
-    this.router.navigate(['/login']);
-}
-
 }

@@ -1,3 +1,6 @@
+import { AddProductComponent } from './mainpage/admin/add-product/add-product.component';
+import { AdminDashboardComponent } from './mainpage/admin/admin-dashboard/admin-dashboard.component';
+import { ForgotPasswordComponent } from './home/forgot-password/forgot-password.component';
 import { AuthGuard } from './mainpage/authentication/auth-guard.service';
 import { LoginComponent } from './home/login/login.component';
 import { VerifyComponent } from './home/verify/verify.component';
@@ -34,6 +37,10 @@ const routes: Routes = [
       {
         path: 'login',
         component: LoginComponent
+      },
+      {
+        path: 'forgot-password',
+        component: ForgotPasswordComponent
       }
     ]
   },
@@ -50,6 +57,25 @@ const routes: Routes = [
         path: 'home',
         component: MainhomeComponent,
         canActivate: [AuthGuard]
+      },
+      {
+        path: 'admin',
+        canActivateChild: [AuthGuard],
+        children: [
+          {
+            path: '',
+            pathMatch: 'full',
+            redirectTo: 'dashboard'
+          },
+          {
+            path: 'dashboard',
+            component: AdminDashboardComponent
+          },
+          {
+            path: 'add-product',
+            component: AddProductComponent
+          }
+        ]
       }
     ]
   }

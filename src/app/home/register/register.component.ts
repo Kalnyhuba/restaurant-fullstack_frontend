@@ -3,7 +3,7 @@ import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { HomeService } from './../home.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { AfterViewInit, Component, ViewChild, ElementRef } from '@angular/core';
+import { AfterViewInit, Component, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { FormGroup, NgForm } from '@angular/forms';
 
 @Component({
@@ -95,7 +95,7 @@ export class RegisterComponent implements AfterViewInit {
 }
 
   onBack() {
-    this.router.navigate(['home']);
+    this.router.navigate(['/mainpage/home']);
   }
 
   onLogin() {

@@ -1,0 +1,28 @@
+<div class="container mt-5">
+    <div class="card p-2">
+        <div class="row">
+            <div class="col-6">
+                <form (ngSubmit)="onSubmit(f)" #f="ngForm" novalidate>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Termék neve</mat-label>
+                        <input matInput id="name" name="name" [(ngModel)]="product.name" required #n="ngModel" placeholder="Termék neve">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Termék leírása</mat-label>
+                        <input matInput id="description" name="description" [(ngModel)]="product.description" required #d="ngModel" placeholder="Termék leírása">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Termék ára</mat-label>
+                        <input matInput id="price" name="price" [(ngModel)]="product.price" required #p="ngModel" placeholder="Termék ára">
+                    </mat-form-field>
+                    <div align="end">
+                        <button mat-raised-button color="primary" style="margin-right: 0.2rem;">Űrlap adatainak
+                            törlése</button>
+                        <button type="submit" mat-raised-button color="primary" [disabled]="!f.form.valid">Hozzáadás</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-6"></div>
+        </div>
+    </div>
+</div>

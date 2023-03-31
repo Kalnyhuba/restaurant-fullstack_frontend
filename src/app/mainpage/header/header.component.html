@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">
+    <span style="margin-right: 0.2rem;">Étterem</span>
+    <button mat-raised-button color="primary" style="margin-right: 0.2rem;" routerLink="/mainpage/home">Főoldal</button>
+    <button *ngIf="isClient() && isLoggedIn" mat-raised-button color="primary" routerLink="/mainpage/profile"
+        style="margin-right: 0.2rem;">Profil</button>
+    <button *ngIf="isAdmin() && isLoggedIn" mat-raised-button color="primary" routerLink="/mainpage/admin"
+        style="margin-right: 0.2rem;">Admin felület</button>
+    <button mat-raised-button color="primary">Rólunk</button>
+    <span class="homepage-spacer"></span>
+    <button *ngIf="!isLoggedIn" mat-raised-button color="primary" routerLink="/register"
+        style="margin-right: 0.2rem;">Regisztráció</button>
+    <button *ngIf="!isLoggedIn" mat-raised-button color="primary" routerLink="/login">Bejelentkezés</button>
+    <button *ngIf="isLoggedIn" mat-raised-button color="primary" (click)="onLogout()">Kijelentkezés</button>
+</mat-toolbar>
