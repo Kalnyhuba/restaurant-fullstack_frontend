@@ -1,4 +1,3 @@
-import { ModalComponent } from './commons/modal/modal.component';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { CommonsModule } from './commons/commons.module';
 import { AuthenticationService } from './mainpage/authentication/authentication.service';
@@ -12,6 +11,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,9 @@ import {MatInputModule} from '@angular/material/input';
     MatToolbarModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatGridListModule,
+    MatTableModule
   ],
   providers: [AuthenticationService, MdbModalService],
   bootstrap: [AppComponent]

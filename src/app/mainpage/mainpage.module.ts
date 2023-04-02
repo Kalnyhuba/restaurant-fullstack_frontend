@@ -15,8 +15,11 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatTableModule} from '@angular/material/table';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 import { AddProductComponent } from './admin/add-product/add-product.component';
+import { DragDropDirective } from './drag-drop.directive';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,8 @@ import { AddProductComponent } from './admin/add-product/add-product.component';
     MainhomeComponent,
     HeaderComponent,
     AdminDashboardComponent,
-    AddProductComponent
+    AddProductComponent,
+    DragDropDirective
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,9 @@ import { AddProductComponent } from './admin/add-product/add-product.component';
     MatToolbarModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatGridListModule,
+    MatTableModule
   ],
   providers: [AuthGuard, {provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptorService, multi: true}],
   exports: []

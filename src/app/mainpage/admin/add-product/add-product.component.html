@@ -1,3 +1,7 @@
+<mat-toolbar color="primary">
+    <button mat-raised-button color="primary" routerLink="/mainpage/admin/dashboard">Admin főoldal</button>
+    <button mat-raised-button color="primary" routerLink="/mainpage/admin/add-product">Új termék hozzáadása</button>
+</mat-toolbar>
 <div class="container mt-5">
     <div class="card p-2">
         <div class="row">
@@ -5,24 +9,52 @@
                 <form (ngSubmit)="onSubmit(f)" #f="ngForm" novalidate>
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-label>Termék neve</mat-label>
-                        <input matInput id="name" name="name" [(ngModel)]="product.name" required #n="ngModel" placeholder="Termék neve">
+                        <input matInput id="name" name="name" [(ngModel)]="product.name" required #n="ngModel"
+                            placeholder="Termék neve">
                     </mat-form-field>
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-label>Termék leírása</mat-label>
-                        <input matInput id="description" name="description" [(ngModel)]="product.description" required #d="ngModel" placeholder="Termék leírása">
+                        <input matInput id="description" name="description" [(ngModel)]="product.description" required
+                            #d="ngModel" placeholder="Termék leírása">
                     </mat-form-field>
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-label>Termék ára</mat-label>
-                        <input matInput id="price" name="price" [(ngModel)]="product.price" required #p="ngModel" placeholder="Termék ára">
+                        <input matInput id="price" name="price" [(ngModel)]="product.price" required #p="ngModel"
+                            placeholder="Termék ára">
                     </mat-form-field>
                     <div align="end">
                         <button mat-raised-button color="primary" style="margin-right: 0.2rem;">Űrlap adatainak
                             törlése</button>
-                        <button type="submit" mat-raised-button color="primary" [disabled]="!f.form.valid">Hozzáadás</button>
+                        <button type="submit" mat-raised-button color="primary"
+                            [disabled]="!f.form.valid">Hozzáadás</button>
                     </div>
                 </form>
             </div>
-            <div class="col-6"></div>
+            <div class="col-6">
+                <div>
+                    <div class="dropzone" appDragDrop (files)="fileDropped($event)">
+                        <div class="dropzone-text-wrapper">
+                            <div class="dropzone-text">
+                                Húzza ide a fájlokat vagy 
+                                <a (click)="fileSelector.click()" class="browse-button">tallózza</a> ki a fájlrendszeréből!
+                            </div>
+                        </div>
+                    </div>
+                    <input type="file" multiple value="select" style="display: none;" #fileSelector (change)="onFileSelected($event)">
+                </div>
+                <div class="mt-5">
+                    <div class="row">
+                        <mat-grid-list cols="4" rowHeight="1:1">
+                            <mat-grid-tile *ngFor="let file of product.images; let i = index;">
+                                <div style="position: relative">
+                                    <span class="btn-remove-image" (click)="removeImage(i)">X</span>
+                                    <img [src]="file.url" width="100px" height="100px">
+                                </div>
+                            </mat-grid-tile>
+                        </mat-grid-list>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

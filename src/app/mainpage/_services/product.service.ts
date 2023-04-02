@@ -9,7 +9,11 @@ export class ProductService {
 
   constructor(private http: HttpClient) { }
 
-  public addProduct(product: Product) {
+  public addProduct(product: FormData) {
     return this.http.post<Product>("http://localhost:8080/admin/add-product", product, { withCredentials: true });
+  }
+
+  public getAllProducts() {
+    return this.http.get<Product[]>("http://localhost:8080/admin/all-products", { withCredentials: true });
   }
 }
