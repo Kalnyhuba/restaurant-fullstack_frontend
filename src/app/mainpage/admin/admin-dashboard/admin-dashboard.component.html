@@ -2,7 +2,11 @@
     <button mat-raised-button color="primary" routerLink="/mainpage/admin/dashboard">Admin főoldal</button>
     <button mat-raised-button color="primary" routerLink="/mainpage/admin/add-product">Új termék hozzáadása</button>
 </mat-toolbar>
-<div class="container mt-5">
+<div class="mt-5 p-3">
+    <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Keresés a termékek között</mat-label>
+        <input matInput #searchKeyword (keyup)="searchByKeyword(searchKeyword.value)" name="searchKey" id="searchKey" placeholder="Keresés">
+    </mat-form-field>
     <table mat-table [dataSource]="productDetails" class="mat-elevation-z8">
         <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef> Azonosító </th>
@@ -19,6 +23,20 @@
         <ng-container matColumnDef="price">
             <th mat-header-cell *matHeaderCellDef> Ár </th>
             <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+        </ng-container>
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> Műveletek </th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-icon-button color="primary" (click)="showImages(element)">
+                    <mat-icon>images</mat-icon>
+                </button>
+                <button mat-icon-button color="primary" (click)="editProduct(element.id)">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" (click)="deleteProduct(element.id)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

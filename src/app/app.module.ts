@@ -13,6 +13,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatTableModule} from '@angular/material/table';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import {MatTableModule} from '@angular/material/table';
     MatFormFieldModule,
     MatInputModule,
     MatGridListModule,
-    MatTableModule
+    MatTableModule,
+    MatIconModule,
+    MatDialogModule
   ],
   providers: [AuthenticationService, MdbModalService],
   bootstrap: [AppComponent]

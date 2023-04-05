@@ -25,8 +25,10 @@
                     <div align="end">
                         <button mat-raised-button color="primary" style="margin-right: 0.2rem;">Űrlap adatainak
                             törlése</button>
-                        <button type="submit" mat-raised-button color="primary"
+                        <button type="submit" *ngIf="isNewProduct" mat-raised-button color="primary"
                             [disabled]="!f.form.valid">Hozzáadás</button>
+                        <button type="submit" *ngIf="!isNewProduct" mat-raised-button color="primary"
+                            [disabled]="!f.form.valid">Frissítés</button>
                     </div>
                 </form>
             </div>
@@ -35,12 +37,14 @@
                     <div class="dropzone" appDragDrop (files)="fileDropped($event)">
                         <div class="dropzone-text-wrapper">
                             <div class="dropzone-text">
-                                Húzza ide a fájlokat vagy 
-                                <a (click)="fileSelector.click()" class="browse-button">tallózza</a> ki a fájlrendszeréből!
+                                Húzza ide a fájlokat vagy
+                                <a (click)="fileSelector.click()" class="browse-button">tallózza</a> ki a
+                                fájlrendszeréből!
                             </div>
                         </div>
                     </div>
-                    <input type="file" multiple value="select" style="display: none;" #fileSelector (change)="onFileSelected($event)">
+                    <input type="file" multiple value="select" style="display: none;" #fileSelector
+                        (change)="onFileSelected($event)">
                 </div>
                 <div class="mt-5">
                     <div class="row">

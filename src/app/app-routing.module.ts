@@ -11,6 +11,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { WelcomeComponent } from './home/welcome/welcome.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { MainhomeComponent } from './mainpage/mainhome/mainhome.component';
+import { ProductResolverService } from './mainpage/_services/product-resolver.service';
+import { ProductDetailsComponent } from './mainpage/mainhome/product-details/product-details.component';
 
 const routes: Routes = [
   {
@@ -59,6 +61,13 @@ const routes: Routes = [
         canActivate: [AuthGuard]
       },
       {
+          path: 'product-details',
+          component: ProductDetailsComponent,
+          canActivate: [AuthGuard],
+          resolve: { product: ProductResolverService }
+        
+      },
+      {
         path: 'admin',
         canActivateChild: [AuthGuard],
         children: [
@@ -73,7 +82,10 @@ const routes: Routes = [
           },
           {
             path: 'add-product',
-            component: AddProductComponent
+            component: AddProductComponent,
+            resolve: {
+              product: ProductResolverService
+            }
           }
         ]
       }

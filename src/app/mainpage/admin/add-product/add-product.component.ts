@@ -2,25 +2,36 @@ import { FileHandle } from './../../_model/file-handle.model';
 import { ProductService } from './../../_services/product.service';
 import { NgForm } from '@angular/forms';
 import { Product } from './../../_model/product.model';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
   styleUrls: ['./add-product.component.css']
 })
-export class AddProductComponent {
+export class AddProductComponent implements OnInit {
+
+  isNewProduct = true;
 
   product: Product = {
+    id: null,
     name: "",
     description: "",
     price: 0,
     images: []
   }
 
-  constructor(private productService: ProductService, private sanitizer: DomSanitizer) { }
+  constructor(private productService: ProductService, private sanitizer: DomSanitizer, private activatedRoute: ActivatedRoute) { }
+
+  ngOnInit(): void {
+      this.product = this.activatedRoute.snapshot.data['product'];
+      if (this.product && this.product.id) {
+        this.isNewProduct = false;
+      }
+  }
 
   onSubmit(form: NgForm) {
     const productFormData = this.convertToFormData(this.product);
