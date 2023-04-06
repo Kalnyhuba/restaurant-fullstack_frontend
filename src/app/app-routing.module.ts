@@ -13,6 +13,10 @@ import { MainpageComponent } from './mainpage/mainpage.component';
 import { MainhomeComponent } from './mainpage/mainhome/mainhome.component';
 import { ProductResolverService } from './mainpage/_services/product-resolver.service';
 import { ProductDetailsComponent } from './mainpage/mainhome/product-details/product-details.component';
+import { CartComponent } from './mainpage/cart/cart.component';
+import { CheckoutComponent } from './mainpage/checkout/checkout.component';
+import { BuyProductResolverService } from './mainpage/_services/buy-product-resolver.service';
+import { OrderConfirmationComponent } from './mainpage/order-confirmation/order-confirmation.component';
 
 const routes: Routes = [
   {
@@ -66,6 +70,24 @@ const routes: Routes = [
           canActivate: [AuthGuard],
           resolve: { product: ProductResolverService }
         
+      },
+      {
+        path: 'cart',
+        component: CartComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'checkout',
+        component: CheckoutComponent,
+        canActivate: [AuthGuard],
+        resolve: {
+          productDetails: BuyProductResolverService
+        }
+      },
+      {
+        path: 'order-confirmation',
+        component: OrderConfirmationComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'admin',

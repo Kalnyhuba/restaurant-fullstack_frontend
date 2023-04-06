@@ -25,7 +25,10 @@
                     <b>{{product.price}} Ft</b>
                 </div>
                 <div class="mt-5">
-                    <button mat-raised-button color="accent">Kosárba</button>
+                    <button mat-raised-button color="accent" style="margin-right: 0.2rem;" (click)="buyProduct(product.id)">Termék megrendelése</button>
+                </div>
+                <div class="mt-5">
+                    <button mat-raised-button color="accent" (click)="addToCart(product.id)">Kosárba</button>
                 </div>
             </div>
         </div>

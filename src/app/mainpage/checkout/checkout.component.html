@@ -1,0 +1,64 @@
+<div class="container mt-5">
+    <div class="card p-2">
+        <div class="row">
+            <div class="col-6">
+                <form #f="ngForm" (ngSubmit)="placeOrder(f)">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Teljes név</mat-label>
+                        <input matInput name="fullName" id="fullName" [(ngModel)]="orderDetails.fullName" required
+                            placeholder="Teljes név">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Szállítási cím</mat-label>
+                        <input matInput name="fullAddress" id="fullAddress" [(ngModel)]="orderDetails.fullAddress"
+                            required placeholder="Szállítási cím">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Telefonszám</mat-label>
+                        <input matInput name="contactNumber" id="contactNumber" [(ngModel)]="orderDetails.contactNumber"
+                            required placeholder="Telefonszám">
+                    </mat-form-field>
+                    <div align="right">
+                        <button type="submit" mat-raised-button color="primary">Termék megvásárlása</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-6">
+                <table class="table">
+                    <thead class="thead">
+                        <tr>
+                            <th>Termék neve</th>
+                            <th>Egységár</th>
+                            <th>Mennyiség</th>
+                            <th>Összesen</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tbody">
+                        <tr *ngFor="let product of productDetails">
+                            <td>{{product.name}}</td>
+                            <td>{{product.price}} Ft</td>
+                            <td>
+                                <select #quantity class="form-select" [ngModel]="getQuantity(product.id)" (change)="onQuantityChanged(quantity.value, product.id)">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </td>
+                            <td>
+                                {{getTotalPrice(product.id, product.price)}} Ft
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>Végösszeg:</td>
+                            <td>{{getBillTotal()}} Ft</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

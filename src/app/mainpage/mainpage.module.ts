@@ -24,6 +24,9 @@ import { AddProductComponent } from './admin/add-product/add-product.component';
 import { DragDropDirective } from './drag-drop.directive';
 import { ShowImagesComponent } from './admin/show-images/show-images.component';
 import { ProductDetailsComponent } from './mainhome/product-details/product-details.component';
+import { CartComponent } from './cart/cart.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { OrderConfirmationComponent } from './order-confirmation/order-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,10 @@ import { ProductDetailsComponent } from './mainhome/product-details/product-deta
     AddProductComponent,
     DragDropDirective,
     ShowImagesComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    CartComponent,
+    CheckoutComponent,
+    OrderConfirmationComponent
   ],
   imports: [
     BrowserModule,
