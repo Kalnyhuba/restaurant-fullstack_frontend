@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, Component, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { FormGroup, NgForm } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { RegisterPopupComponent } from 'src/app/commons/register-popup/register-popup.component';
 
 @Component({
   selector: 'app-register',
@@ -37,7 +39,7 @@ export class RegisterComponent implements AfterViewInit {
 
   modalRef: MdbModalRef<ModalComponent>;
 
-  constructor(private http: HttpClient, private router: Router, private modalService: MdbModalService, private homeService: HomeService) { }
+  constructor(private http: HttpClient, private router: Router, private dialog:MatDialog, private homeService: HomeService) { }
 
   ngAfterViewInit(): void {
       this.homeService.setElements({
@@ -67,7 +69,7 @@ export class RegisterComponent implements AfterViewInit {
     )
       .subscribe({
         next: (responseData) => {
-          this.openModal();
+          this.openDialog();
           this.homeService.onLoadingState.next({
             isLoading: false,
             elements: this.homeService.elements
@@ -84,15 +86,9 @@ export class RegisterComponent implements AfterViewInit {
       });
   }
 
-  openModal() {
-      this.modalRef = this.modalService.open(ModalComponent, {
-      data: { title: 'Regisztráció', 
-      body: 'Megerősítő emailt küldtünk Önnek, kérem ellenőrizze email fiókját!',
-      closeString: 'Bezárás',
-      buttonString: 'Tovább a bejelentkezéshez'
-              }
-    });
-}
+  openDialog() {
+    const dialogRef = this.dialog.open(RegisterPopupComponent);
+  }
 
   onBack() {
     this.router.navigate(['/mainpage/home']);

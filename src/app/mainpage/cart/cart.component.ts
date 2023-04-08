@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../_services/product.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -9,11 +10,11 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class CartComponent implements OnInit {
 
-  displayedColumns: string[] = ['name', 'description', 'price'];
+  displayedColumns: string[] = ['name', 'description', 'price', 'action'];
 
   cartDetails: any = [];
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService, private router: Router) { }
 
   ngOnInit(): void {
     this.getCartDetails();
@@ -30,5 +31,34 @@ export class CartComponent implements OnInit {
         },
         complete: () => { }
       });
+  }
+
+  deleteCartItem(id) {
+    this.productService.deleteCartItem(id)
+    .subscribe({
+      next: (response) => {
+        this.getCartDetails();
+      },
+      error: (error: HttpErrorResponse) => {
+        console.log(error);
+      },
+      complete: () => { }
+    });
+  }
+
+  checkout() {
+    this.router.navigate(['/mainpage/checkout', {
+      isSingleProduct: false, productId: 0
+    }]);
+    /*this.productService.getProductDetails(false, 0)
+    .subscribe({
+      next: (response) => {
+        console.log(response);
+      },
+      error: (error: HttpErrorResponse) => {
+        console.log(error);
+      },
+      complete: () => { }
+    });*/
   }
 }

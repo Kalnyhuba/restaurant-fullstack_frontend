@@ -15,6 +15,8 @@ export class CheckoutComponent implements OnInit {
 
   productDetails: Product[] = [];
 
+  isSingleProduct: string = "";
+
   orderDetails: OrderDetails = {
     fullName: "",
     fullAddress: "",
@@ -26,6 +28,7 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.productDetails = this.activatedRoute.snapshot.data['productDetails'];
+    this.isSingleProduct = this.activatedRoute.snapshot.paramMap.get("isSingleProduct");
     this.productDetails.forEach(
       p => this.orderDetails.orderProductQuantityList.push(
         { productId: p.id, quantity: 1 }
@@ -34,7 +37,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   public placeOrder(form: NgForm) {
-    this.productService.placeOrder(this.orderDetails)
+    this.productService.placeOrder(this.orderDetails, this.isSingleProduct)
       .subscribe({
         next: (response) => {
           form.reset();

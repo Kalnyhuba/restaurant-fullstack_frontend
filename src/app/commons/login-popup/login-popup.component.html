@@ -1,0 +1,10 @@
+<h2 mat-dialog-title>A jelszó visszaállító emailt elküldtük Önnek!</h2>
+<mat-dialog-content class="mat-typography">
+    <p>
+        Kérem ellenőrizze email fiókját és kövesse az ott megjelenő utasításokat!
+    </p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-raised-button color="primary" mat-dialog-close>Bezárás</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="true" (click)="toLogin()">Tovább</button>
+</mat-dialog-actions>

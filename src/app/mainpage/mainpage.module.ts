@@ -27,6 +27,7 @@ import { ProductDetailsComponent } from './mainhome/product-details/product-deta
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { OrderConfirmationComponent } from './order-confirmation/order-confirmation.component';
+import { UserOrdersComponent } from './user-orders/user-orders.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { OrderConfirmationComponent } from './order-confirmation/order-confirmat
     ProductDetailsComponent,
     CartComponent,
     CheckoutComponent,
-    OrderConfirmationComponent
+    OrderConfirmationComponent,
+    UserOrdersComponent
   ],
   imports: [
     BrowserModule,

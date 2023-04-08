@@ -43,7 +43,7 @@
                     <div>Nem egyező jelszavak!</div>
                 </div>
                 <div class="alert alert-warning p-2 mt-1" *ngIf="em.errors?.['email']">Érvénytelen email formátum</div>
-                <button type="submit" mat-raised-button color="primary" [disabled]="!f.form.valid" (click)="openModal()"
+                <button type="submit" mat-raised-button color="primary" [disabled]="!f.form.valid"
                     style="margin-right: 0.3rem;">Regisztráció</button>
                 <button mat-raised-button color="primary" routerLink="/mainpage/home">Vissza</button>
             </form>

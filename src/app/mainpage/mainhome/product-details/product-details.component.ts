@@ -35,7 +35,9 @@ export class ProductDetailsComponent implements OnInit {
     this.productService.addToCart(id)
     .subscribe({
       next: (response) => {
-        console.log(response);
+        if (response == null) {
+          console.log("A termék már hozzá lett adva a kosárhoz!");
+        }
       },
       error: (error: HttpErrorResponse) => {
         console.log(error);

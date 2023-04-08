@@ -17,6 +17,8 @@ import { CartComponent } from './mainpage/cart/cart.component';
 import { CheckoutComponent } from './mainpage/checkout/checkout.component';
 import { BuyProductResolverService } from './mainpage/_services/buy-product-resolver.service';
 import { OrderConfirmationComponent } from './mainpage/order-confirmation/order-confirmation.component';
+import { UserOrdersComponent } from './mainpage/user-orders/user-orders.component';
+import { ResetPasswordComponent } from './home/reset-password/reset-password.component';
 
 const routes: Routes = [
   {
@@ -47,6 +49,10 @@ const routes: Routes = [
       {
         path: 'forgot-password',
         component: ForgotPasswordComponent
+      },
+      {
+        path: 'reset_password',
+        component: ResetPasswordComponent
       }
     ]
   },
@@ -87,6 +93,11 @@ const routes: Routes = [
       {
         path: 'order-confirmation',
         component: OrderConfirmationComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'user-orders',
+        component: UserOrdersComponent,
         canActivate: [AuthGuard]
       },
       {

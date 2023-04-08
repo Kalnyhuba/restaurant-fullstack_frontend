@@ -5,6 +5,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { ModalComponent } from 'src/app/commons/modal/modal.component';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
+import { MatDialog } from '@angular/material/dialog';
+import { LoginPopupComponent } from 'src/app/commons/login-popup/login-popup.component';
 
 @Component({
   selector: 'app-forgot-password',
@@ -27,7 +29,7 @@ export class ForgotPasswordComponent implements AfterViewInit {
 
   modalRef: MdbModalRef<ModalComponent>;
 
-  constructor(private http: HttpClient, private router: Router, private homeService: HomeService, private modalService: MdbModalService) { }
+  constructor(private http: HttpClient, private router: Router, private homeService: HomeService, private dialog: MatDialog) { }
 
   ngAfterViewInit(): void {
     this.homeService.setElements({
@@ -56,7 +58,7 @@ export class ForgotPasswordComponent implements AfterViewInit {
     )
       .subscribe({
         next: (responseData) => {
-          this.openModal();
+          this.openDialog();
           this.homeService.onLoadingState.next({
             isLoading: false,
             elements: this.homeService.elements
@@ -73,15 +75,8 @@ export class ForgotPasswordComponent implements AfterViewInit {
       });
   }
 
-  openModal() {
-    this.modalRef = this.modalService.open(ModalComponent, {
-      data: {
-        title: 'Jelszó visszaállítás',
-        body: 'Helyreállító emailt küldtünk Önnek, kérem ellenőrizze email fiókját!',
-        closeString: 'Bezárás',
-        buttonString: 'Tovább a bejelentkezéshez'
-      }
-    });
+  openDialog() {
+    const dialogRef = this.dialog.open(LoginPopupComponent);
   }
 
   onBack() {

@@ -1,0 +1,10 @@
+<h2 mat-dialog-title>A regisztráció sikeres volt!</h2>
+<mat-dialog-content class="mat-typography">
+    <p>
+        Kérem navigáljon vissza a bejelentkező felületre és próbáljon meg bejelentkezni miután megerősítette fiókját az email címére küldött megerősítő linken keresztül!
+    </p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-raised-button color="primary" mat-dialog-close>Bezárás</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="true" (click)="toLogin()">Tovább</button>
+</mat-dialog-actions>
