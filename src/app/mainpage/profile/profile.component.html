@@ -1,0 +1,18 @@
+<div class="row justify-content-center">
+    <div
+        class="col-12 col-sm-11 col-md-10 col-xl-8 d-flex flex-column justify-content-start align-items-center p-0 max-width">
+        <div class="card w-100 p-0">
+            <div class="card-header">
+                <h3 class="mt-2 text-center">Profil adatok</h3>
+            </div>
+            <div class="card-body">
+                <div>Teljes név: <span class="ms-1">{{ profileData.fullName }}</span>
+                </div>
+                <div>Felhasználónév: <span class="ms-1">{{
+                        profileData.username }}</span></div>
+                <div>Email-cím: <span class="ms-1">{{ profileData.email }}</span></div>
+                <div>Elfelejtette jelszavát? <span><a routerLink="/forgot-password">Jelszó megváltoztatása</a></span></div>
+            </div>
+        </div>
+    </div>
+</div>

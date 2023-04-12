@@ -6,7 +6,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { ShowImagesComponent } from '../show-images/show-images.component';
 import { ImageProcessingService } from '../../_services/image-processing.service';
 import { Router } from '@angular/router';
-import { ProductPage } from '../../_model/product-page.model';
 
 @Component({
   selector: 'app-admin-dashboard',

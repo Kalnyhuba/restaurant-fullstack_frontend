@@ -1,4 +1,4 @@
-import { Product } from "./product.model";
+import { OrderItem } from "./order-item.model";
 
 export interface UserOrdersDetails {
     id: number,
@@ -7,6 +7,6 @@ export interface UserOrdersDetails {
     contactNumber: string,
     orderStatus: string,
     amount: number,
-    products: Product[],
+    items: OrderItem[],
     user: any
 }

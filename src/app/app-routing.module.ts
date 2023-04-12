@@ -19,6 +19,7 @@ import { BuyProductResolverService } from './mainpage/_services/buy-product-reso
 import { OrderConfirmationComponent } from './mainpage/order-confirmation/order-confirmation.component';
 import { UserOrdersComponent } from './mainpage/user-orders/user-orders.component';
 import { ResetPasswordComponent } from './home/reset-password/reset-password.component';
+import { ProfileComponent } from './mainpage/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -98,6 +99,11 @@ const routes: Routes = [
       {
         path: 'user-orders',
         component: UserOrdersComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent,
         canActivate: [AuthGuard]
       },
       {

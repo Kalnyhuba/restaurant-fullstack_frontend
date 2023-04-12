@@ -5,7 +5,7 @@
         routerLink="/mainpage/cart">Kosár</button>
     <button *ngIf="isClient() && isLoggedIn" mat-raised-button color="primary" routerLink="/mainpage/profile"
         style="margin-right: 0.2rem;">Profil</button>
-    <button *ngIf="isClient() && isLoggedIn" mat-raised-button color="primary" routerLink="/mainpage/user-orders"
+    <button *ngIf="isLoggedIn" mat-raised-button color="primary" routerLink="/mainpage/user-orders"
         style="margin-right: 0.2rem;">Rendeléseim</button>
     <button *ngIf="isAdmin() && isLoggedIn" mat-raised-button color="primary" routerLink="/mainpage/admin"
         style="margin-right: 0.2rem;">Admin felület</button>

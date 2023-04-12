@@ -1,5 +1,5 @@
 <div class="container">
-    <table mat-table [dataSource]="userOrderDetails" class="mat-elevation-z8 w-100 mt-5">
+    <table mat-table [dataSource]="userOrderDetails" multiTemplateDataRows class="mat-elevation-z8 w-100 mt-5">
         <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef>Név</th>
             <td mat-cell *matCellDef="let element">{{element.fullName}}</td>
@@ -12,9 +12,17 @@
             <th mat-header-cell *matHeaderCellDef>Telefonszám</th>
             <td mat-cell *matCellDef="let element">{{element.contactNumber}}</td>
         </ng-container>
+        <ng-container matColumnDef="products">
+            <th mat-header-cell *matHeaderCellDef>Megrendelt termékek</th>
+            <td mat-cell *matCellDef="let element">
+                <div *ngFor="let item of element.items">
+                    {{item.product.name}}
+                </div>
+            </td>
+        </ng-container>
         <ng-container matColumnDef="amount">
             <th mat-header-cell *matHeaderCellDef>Végösszeg</th>
-            <td mat-cell *matCellDef="let element">{{element.amount}}</td>
+            <td mat-cell *matCellDef="let element">{{element.amount}} Ft</td>
         </ng-container>
         <ng-container matColumnDef="status">
             <th mat-header-cell *matHeaderCellDef>Rendelés állapota</th>
