@@ -1,5 +1,15 @@
 table {
     width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+table tr:nth-of-type(even) {
+    background-color: aliceblue;
+}
+
+table th {
+    background-color: lightgray;
 }
 
 table td {
@@ -8,4 +18,9 @@ table td {
 
 .mat-column-description {
     width: 35% !important;
+}
+
+mat-label {
+    color: black;
+    font-weight: bold;
 }

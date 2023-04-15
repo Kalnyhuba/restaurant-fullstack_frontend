@@ -1,6 +1,7 @@
 mat-grid-tile {
     border: 1px solid lightgray;
     border-radius: 5px;
+    background-image: linear-gradient(to top, lightgray, white);
 }
 
 .image-container {
@@ -17,4 +18,14 @@ mat-grid-tile {
     left: 0;
     right: 0;
     margin: auto;
+    mix-blend-mode: multiply;
+}
+
+.icon-display {
+    transform: scale(1.3);
+}
+
+mat-label {
+    color: black;
+    font-weight: bold;
 }

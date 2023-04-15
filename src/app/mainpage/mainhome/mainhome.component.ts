@@ -49,4 +49,19 @@ export class MainhomeComponent implements OnInit {
     this.productDetails = [];
     this.getAllProducts(searchKeyword);
   }
+
+  addToCart(id) {
+    this.productService.addToCart(id)
+    .subscribe({
+      next: (response) => {
+        if (response == null) {
+          console.log("A termék már hozzá lett adva a kosárhoz!");
+        }
+      },
+      error: (error: HttpErrorResponse) => {
+        console.log(error);
+      },
+      complete: () => { }
+    });
+  }
 }

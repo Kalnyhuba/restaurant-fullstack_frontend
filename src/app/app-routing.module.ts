@@ -20,6 +20,7 @@ import { OrderConfirmationComponent } from './mainpage/order-confirmation/order-
 import { UserOrdersComponent } from './mainpage/user-orders/user-orders.component';
 import { ResetPasswordComponent } from './home/reset-password/reset-password.component';
 import { ProfileComponent } from './mainpage/profile/profile.component';
+import { AboutComponent } from './mainpage/about/about.component';
 
 const routes: Routes = [
   {
@@ -105,6 +106,10 @@ const routes: Routes = [
         path: 'profile',
         component: ProfileComponent,
         canActivate: [AuthGuard]
+      },
+      {
+        path: 'about',
+        component: AboutComponent
       },
       {
         path: 'admin',
